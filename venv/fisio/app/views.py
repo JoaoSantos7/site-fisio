@@ -27,6 +27,13 @@ def agendamento(request):
         data_consulta = request.POST.get('data')
         horario_consulta = request.POST.get('horario')
         mensagem_adicional = request.POST.get('mensagem')
+        tipo_consulta = request.POST.get('tipo_consulta')
+        convenio = request.POST.get('convenio')
+
+        if tipo_consulta == 'particular':
+            convenio = None
+        else:
+            convenio = request.POST.get('convenio')
 
         # Chame a função de validação
         if validar_horario_consulta(data_consulta, horario_consulta):
@@ -37,6 +44,8 @@ def agendamento(request):
                 telefone=telefone,
                 data_consulta=data_consulta,
                 horario_consulta=horario_consulta,
+                tipo_consulta=tipo_consulta,
+                convenio=convenio,
                 mensagem_adicional=mensagem_adicional
             )
             agendamento.save()

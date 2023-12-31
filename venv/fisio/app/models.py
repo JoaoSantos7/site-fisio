@@ -6,6 +6,8 @@ class Agendamento(models.Model):
     telefone = models.CharField(max_length=15)
     data_consulta = models.DateField()
     horario_consulta = models.TimeField()
+    tipo_consulta = models.CharField(max_length=20, choices=[('particular', 'Particular'), ('convenio', 'Convênio')])
+    convenio = models.CharField(max_length=20, blank=True, null=True, choices=[('unimed', 'Unimed'), ('iasep', 'Iasep'), ('hapvida', 'Hapvida'), ('seila', 'Sei La')])
     mensagem_adicional = models.TextField()
     data_agendamento = models.DateTimeField(auto_now_add=True)  # Adiciona a data/hora do agendamento
 

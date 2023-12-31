@@ -24,44 +24,50 @@
                 <div class="form-group">
                     <label for="nome">Nome Completo:</label>
                     <input type="text" class="form-control" id="nome" name="nome" required>
-                    {% if form.nome.errors %}
-                        <span class="text-danger">{{ form.nome.errors.0 }}</span>
-                    {% endif %}
+                        <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" required>
-                    {% if form.email.errors %}
-                        <span class="text-danger">{{ form.email.errors.0 }}</span>
-                    {% endif %}
+                        <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label for="telefone">Telefone:</label>
                     <input type="tel" class="form-control" id="telefone" name="telefone" oninput="formatarTelefone(this)" required>
-                    {% if form.telefone.errors %}
-                        <span class="text-danger">{{ form.telefone.errors.0 }}</span>
-                    {% endif %}
+                        <span class="text-danger"></span>
                 </div>                
                 <div class="form-group">
                     <label for="data">Data da Consulta:</label>
                     <input type="date" class="form-control" id="data" name="data" required>
-                    {% if form.data.errors %}
-                        <span class="text-danger">{{ form.data.errors.0 }}</span>
-                    {% endif %}
+                        <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label for="horario">Horário da Consulta:</label>
                     <input type="time" class="form-control" id="horario" name="horario" required>
-                    {% if form.horario.errors %}
-                        <span class="text-danger">{{ form.horario.errors.0 }}</span>
-                    {% endif %}
+                        <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="tipo_consulta">Tipo de Consulta:</label>
+                    <select class="form-control" id="tipo_consulta" name="tipo_consulta" required>
+                        <option value="particular">Particular</option>
+                        <option value="convenio">Convênio</option>
+                    </select>
+                        <span class="text-danger"></span>
+                </div>
+                <div id="convenioDiv" class="form-group" style="display:none;">
+                    <label for="convenio">Convênio:</label>
+                    <select class="form-control" id="convenio" name="convenio">
+                        <option value="unimed">Unimed</option>
+                        <option value="iasep">Iasep</option>
+                        <option value="hapvida">Hapvida</option>
+                        <option value="seila">Sei La</option>
+                    </select>
+                        <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label for="mensagem">Mensagem Adicional:</label>
                     <textarea class="form-control" id="mensagem" name="mensagem" rows="3"></textarea>
-                    {% if form.mensagem.errors %}
-                        <span class="text-danger">{{ form.mensagem.errors.0 }}</span>
-                    {% endif %}
+                        <span class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Agendar Consulta</button>
             </form>
@@ -80,6 +86,11 @@
                     }
                 }
 
+                // Mostra ou esconde o campo de convênio com base na escolha do tipo de consulta
+                document.getElementById('tipo_consulta').addEventListener('change', function() {
+                    var convenioDiv = document.getElementById('convenioDiv');
+                    convenioDiv.style.display = this.value === 'convenio' ? 'block' : 'none';
+                });
             </script>
         </div>
     </div>
