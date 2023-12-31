@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <h1 class="display-2 text-white mb-4 animated slideInDown">Sobre nós</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item text-primary" aria-current="page">Sobre nós</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+<!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+                <p class="fs-5 fw-medium text-primary">Lorem</p>
+                <h1 class="display-5 mb-4">Sla sla Lorem lorem</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore officia dignissimos aperiam repellat voluptas quia, rem porro necessitatibus reprehenderit temporibus! Pariatur, delectus impedit aspernatur dignissimos quaerat fugiat? Voluptatibus, earum alias!</p>
+                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea enim placeat suscipit fugiat optio nam inventore voluptate nisi assumenda. Iusto illo, odio tenetur nobis nam fugiat consequuntur officia excepturi asperiores!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About End -->
+
+
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-medium text-primary">Nossa equipe</p>
+            <h1 class="display-5 mb-5">Nossos profissionais que vão ajudar você</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item rounded overflow-hidden pb-4">
+                    <img class="img-fluid mb-4" src="{% static 'img/noth1.jpg' %}" alt="">
+                    <h5>Teteus</h5>
+                    <span class="text-primary">Fundador & CEO</span>
+                    <ul class="team-social">
+                        <li><a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="btn btn-square" href="https://www.instagram.com/matheusxxsant/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="btn btn-square" href=""><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="team-item rounded overflow-hidden pb-4">
+                    <img class="img-fluid mb-4" src="{% static 'img/jv2.jpg' %}" alt="" style="width: 11rem;">
+                    <h5>Jv</h5>
+                    <span class="text-primary">Co Fundador</span>
+                    <ul class="team-social">
+                        <li><a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="btn btn-square" href="https://www.instagram.com/jotave_rz/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="btn btn-square" href=""><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded overflow-hidden pb-4">
+                    <img class="img-fluid mb-4" src="{% static 'img/noth1.jpg' %}" alt="">
+                    <h5>Noth</h5>
+                    <span class="text-primary">Gerente Executivo</span>
+                    <ul class="team-social">
+                        <li><a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="btn btn-square" href="https://www.instagram.com/matheusxxsant/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="btn btn-square" href=""><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="team-item rounded overflow-hidden pb-4">
+                    <img class="img-fluid mb-4" src="{% static 'img/jv3.jpg' %}" alt="" style="width: 11rem; border-radius: 10px 10px 0 0 ;">
+                    <h5>Jotave</h5>
+                    <span class="text-primary">Desenvolvedor</span>
+                    <ul class="team-social">
+                        <li><a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="btn btn-square" href="https://www.instagram.com/jotave_rz/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="btn btn-square" href=""><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+{% endblock %}
