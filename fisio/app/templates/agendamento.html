@@ -3,6 +3,25 @@
 
 {% block body %}
 
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger mt-3 mensagem-alert" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esconde a mensagem após 5 segundos
+            setTimeout(function() {
+                var mensagemAlert = document.querySelector('.mensagem-alert');
+                if (mensagemAlert) {
+                    mensagemAlert.style.display = 'none';
+                }
+            }, 5000);
+        });
+    </script>
+{% endif %}
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6 offset-md-3">
