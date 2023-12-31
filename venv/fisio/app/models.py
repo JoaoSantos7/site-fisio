@@ -7,6 +7,10 @@ class Agendamento(models.Model):
     data_consulta = models.DateField()
     horario_consulta = models.TimeField()
     mensagem_adicional = models.TextField()
+    data_agendamento = models.DateTimeField(auto_now_add=True)  # Adiciona a data/hora do agendamento
+
+    def __str__(self):
+        return f"{self.nome} - {self.data_consulta} - {self.horario_consulta}"
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
