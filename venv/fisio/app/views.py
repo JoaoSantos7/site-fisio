@@ -13,10 +13,7 @@ def index(request):
     context = {}
     return render(request, 'index.html', context)
 
-def cadastro(request):
-    context = {}
-    return render(request, 'cadastro.html', context)
-
+# Cadastro
 class CadastroView(View):
     template_name = 'cadastro.html'
 
@@ -36,9 +33,31 @@ class CadastroView(View):
         context = {'form': form}
         return render(request, self.template_name, context)
 
-def UserLogin(request):
-    context = {}
-    return render(request, 'login.html', context)
+# Login
+class LoginView(View):
+    template_name = 'login.html'
+
+    def get(self, request):
+        return render(request, self.template_name, {})
+
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Login bem-sucedido.')
+            return redirect('index')
+        else:
+            messages.error(request, 'Usuário e senha não cadastrados.')
+            return render(request, self.template_name, {})
+
+# Logout
+class UserLogoutView(View):
+    def get(self, request):
+        logout(request)
+        messages.success(request, 'Você saiu do sistema.')
+        return redirect('cadastro')
 
 def sobrenos(request):
     context = {}
