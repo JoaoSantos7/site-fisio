@@ -1,3 +1,28 @@
+/* Cadastro */
+#formC {
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#botaoCadastro {
+    margin-left: 1%; 
+}
+
+#botaoCadastro:hover {
+    background-color: #04415e;
+    color: white;
+}
+
+#log1 {
+    margin-bottom: 3.5rem;
+    color: white;
+}
+
+.loginText:hover{
+    text-decoration: underline;
+}
+
 /********** Template CSS **********/
 :root {
     --primary: #4761FF;

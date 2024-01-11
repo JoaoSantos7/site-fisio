@@ -1,9 +1,12 @@
 from django.urls import path 
-
 from . import views 
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('cadastro/', views.CadastroView.as_view(), name='cadastro'),
+    path('login/', views.UserLogin, name='login'),
     path('erro/', views.erro, name='404'),
     path('sobrenos/', views.sobrenos, name='sobrenos'),
     path('faleconosco/', views.faleconosco, name='faleconosco'),
@@ -13,3 +16,6 @@ urlpatterns = [
     path('<int:question_id>/results', views.results, name='results'),
     path('<int:question_id>/vote', views.vote, name='vote'),
 ]
+
+#if settings.DEBUG:
+    #urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

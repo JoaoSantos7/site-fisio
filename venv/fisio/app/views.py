@@ -1,13 +1,44 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse 
+from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
 from .models import Agendamento
+from .forms import UserForm
+from django.views import View
 from django.contrib import messages
 from datetime import datetime, time
 from django import forms
 
+
 def index(request):
     context = {}
     return render(request, 'index.html', context)
+
+def cadastro(request):
+    context = {}
+    return render(request, 'cadastro.html', context)
+
+class CadastroView(View):
+    template_name = 'cadastro.html'
+
+    def get(self, request):
+        context = {'form': UserForm()}
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        form = UserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+            messages.success(request, 'Usuário cadastrado com sucesso.')
+            return redirect('index')
+        context = {'form': form}
+        return render(request, self.template_name, context)
+
+def UserLogin(request):
+    context = {}
+    return render(request, 'login.html', context)
 
 def sobrenos(request):
     context = {}
