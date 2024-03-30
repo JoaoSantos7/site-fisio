@@ -8,6 +8,7 @@ urlpatterns = [
     path('cadastro/', views.CadastroView.as_view(), name='cadastro'),
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.UserLogoutView.as_view(), name='user_logout'),
+    path('profile/', views.profile, name='profile'),
     path('sobrenos/', views.sobrenos, name='sobrenos'),
     path('faleconosco/', views.faleconosco, name='faleconosco'),
     path('agendamento/', views.agendamento, name='agendamento'),

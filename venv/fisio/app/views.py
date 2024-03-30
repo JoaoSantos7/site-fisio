@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
-from .models import Agendamento
+from .models import Agendamento, UserProfile
 from .forms import UserForm
 from django.views import View
 from django.contrib import messages
@@ -27,6 +27,13 @@ class CadastroView(View):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
+            # Cria o perfil do usuário
+            UserProfile.objects.create(
+                user=user,
+                data_nascimento=form.cleaned_data.get('data_nascimento'),
+                numero_telefone=form.cleaned_data.get('numero_telefone')
+                # Adicione mais campos do perfil conforme necessário
+            )
             login(request, user)
             messages.success(request, 'Usuário cadastrado com sucesso.')
             return redirect('index')
@@ -58,6 +65,18 @@ class UserLogoutView(View):
         logout(request)
         messages.success(request, 'Você saiu do sistema.')
         return redirect('cadastro')
+    
+# profile
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def profile(request):
+    # "objects.get_or_create" nessa parte se o 'objeto' não tiver sido criado ele ira criar um automaticamente através do 'or_create'
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+    context = {'user_profile': user_profile}
+    return render(request, 'profile.html', context)
+
+
 
 def sobrenos(request):
     context = {}
@@ -67,6 +86,7 @@ def faleconosco(request):
     context = {}
     return render(request, 'faleconosco.html', context)
 
+# Erro 404
 def erro_404(request, exception):
     context = {}
     return render(request, '404.html', context)
@@ -142,12 +162,6 @@ def validar_horario_consulta(data_consulta, horario_consulta):
         return False
     
 # Fim do Agendamento
-
-
-
-# def erro(request):
-    # context = {}
-    # return render(request, '404.html', context)
 
 def detail(request, question_id):
     context = {}

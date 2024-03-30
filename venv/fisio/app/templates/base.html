@@ -151,7 +151,7 @@
                                         Bem-vindo(a), {{ user.username }}!
                                 </a>
                                 <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
-                                    <a href="#" class="dropdown-item">Seu Perfil</a>
+                                    <a href="{% url 'profile' %}" class="dropdown-item">Seu Perfil</a>
                                     <a href="testimonial.html" class="dropdown-item">Suas Consultas</a>
                                     <a href="{% url 'user_logout' %}" class="dropdown-item" style="color: red;">Sair da Conta</a>
                                 </div>

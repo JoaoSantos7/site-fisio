@@ -11,3 +11,7 @@ admin.site.register(Agendamento, AgendamentoAdmin)
 admin.site.register(Question)
 admin.site.register(Choice)
 
+
+admin.site.site_header = 'Fisio Teteus'
+admin.site.site_title = 'Fisio Teteus'
+
