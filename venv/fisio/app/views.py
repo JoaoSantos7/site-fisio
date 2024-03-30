@@ -67,6 +67,10 @@ def faleconosco(request):
     context = {}
     return render(request, 'faleconosco.html', context)
 
+def erro_404(request, exception):
+    context = {}
+    return render(request, '404.html', context)
+
 # Agendamento
 
 def agendamento(request):
@@ -139,9 +143,11 @@ def validar_horario_consulta(data_consulta, horario_consulta):
     
 # Fim do Agendamento
 
-def erro(request):
-    context = {}
-    return render(request, '404.html', context)
+
+
+# def erro(request):
+    # context = {}
+    # return render(request, '404.html', context)
 
 def detail(request, question_id):
     context = {}

@@ -8,7 +8,6 @@ urlpatterns = [
     path('cadastro/', views.CadastroView.as_view(), name='cadastro'),
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.UserLogoutView.as_view(), name='user_logout'),
-    path('erro/', views.erro, name='404'),
     path('sobrenos/', views.sobrenos, name='sobrenos'),
     path('faleconosco/', views.faleconosco, name='faleconosco'),
     path('agendamento/', views.agendamento, name='agendamento'),
@@ -17,6 +16,8 @@ urlpatterns = [
     path('<int:question_id>/results', views.results, name='results'),
     path('<int:question_id>/vote', views.vote, name='vote'),
 ]
+
+handlrer404 = "app.views.erro_404"
 
 #if settings.DEBUG:
     #urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
