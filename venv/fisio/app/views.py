@@ -32,7 +32,6 @@ class CadastroView(View):
                 user=user,
                 data_nascimento=form.cleaned_data.get('data_nascimento'),
                 numero_telefone=form.cleaned_data.get('numero_telefone')
-                # Adicione mais campos do perfil conforme necessário
             )
             login(request, user)
             messages.success(request, 'Usuário cadastrado com sucesso.')
