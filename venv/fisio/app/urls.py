@@ -2,6 +2,8 @@ from django.urls import path
 from . import views 
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import lista_medicos
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -12,10 +14,12 @@ urlpatterns = [
     path('sobrenos/', views.sobrenos, name='sobrenos'),
     path('faleconosco/', views.faleconosco, name='faleconosco'),
     path('agendamento/', views.agendamento, name='agendamento'),
+    path('acompanhamento/', views.acompanhamento, name='acompanhamento'),
     #path('agendar_consulta/', views.agendar_consulta, name='agendar_consulta'),
     path('<int:question_id>', views.detail, name='detail'),
     path('<int:question_id>/results', views.results, name='results'),
     path('<int:question_id>/vote', views.vote, name='vote'),
+    path('medicos/', lista_medicos, name='lista_medicos'),
 ]
 
 handlrer404 = "app.views.erro_404"

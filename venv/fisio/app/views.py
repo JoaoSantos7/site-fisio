@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
-from .models import Agendamento, UserProfile
+from .models import Agendamento, UserProfile, Medico
 from .forms import UserForm
 from django.views import View
 from django.contrib import messages
 from datetime import datetime, time
 from django import forms
+
 
 
 def index(request):
@@ -76,6 +77,16 @@ def profile(request):
     context = {'user_profile': user_profile}
     return render(request, 'profile.html', context)
 
+
+def lista_medicos(request):
+    medicos = Medico.objects.all() 
+    return render(request, 'lista_medicos.html', {'medicos': medicos})
+
+
+def acompanhamento(request):
+    context = {}
+    medicos = Medico.objects.all() 
+    return render(request, 'acompanhamento.html', {'medicos': medicos})
 
 
 def sobrenos(request):

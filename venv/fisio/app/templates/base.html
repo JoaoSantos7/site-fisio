@@ -141,21 +141,25 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/" class="nav-item nav-link">Home</a>
                         <a href="{% url 'sobrenos' %}" class="nav-item nav-link">Sobre nós</a>
                         <a href="{% url 'faleconosco' %}" class="nav-item nav-link">Fale Conosco</a>
-                        <a href="{% url 'agendamento' %}" class="nav-item nav-link">Agende sua consulta</a>
-                        {% if user.is_authenticated %}
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">  
+                        {% if user.is_superuser %}
+                            <a href="{% url 'acompanhamento' %}" class="nav-item nav-link">Acompanhamento</a>
+                        {% else %}
+                            <a href="{% url 'agendamento' %}" class="nav-item nav-link">Agende sua consulta</a>
+                            {% endif %}
+                            {% if user.is_authenticated %}
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">  
                                         Bem-vindo(a), {{ user.username }}!
-                                </a>
-                                <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
-                                    <a href="{% url 'profile' %}" class="dropdown-item">Seu Perfil</a>
-                                    <a href="testimonial.html" class="dropdown-item">Suas Consultas</a>
-                                    <a href="{% url 'user_logout' %}" class="dropdown-item" style="color: red;">Sair da Conta</a>
+                                    </a>
+                                    <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
+                                        <a href="{% url 'profile' %}" class="dropdown-item">Seu Perfil</a>
+                                        <a href="testimonial.html" class="dropdown-item">Suas Consultas</a>
+                                        <a href="{% url 'user_logout' %}" class="dropdown-item" style="color: red;">Sair da Conta</a>
+                                    </div>
                                 </div>
-                            </div>
                         {% else %}
                         <a href="{% url 'login' %}" class="nav-item nav-link">login</a>
                         <a href="{% url 'cadastro' %}" class="nav-item nav-link">cadastre-se</a>
