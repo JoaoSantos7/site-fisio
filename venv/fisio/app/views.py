@@ -25,21 +25,33 @@ class CadastroView(View):
     def post(self, request):
         form = UserForm(request.POST)
         if form.is_valid():
+            cpf = form.cleaned_data['cpf']
+            if UserProfile.objects.filter(cpf=cpf).exists():
+                # Adiciona uma mensagem de erro se o CPF já estiver registrado
+                messages.error(request, 'Este CPF já está registrado.')
+                return render(request, self.template_name, {'form': form})
+            
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
+            
             # Cria o perfil do usuário
             UserProfile.objects.create(
                 user=user,
+                first_name=form.cleaned_data.get('first_name'),
+                username=form.cleaned_data.get('username'),
+                cpf=cpf,
+                email=form.cleaned_data.get('email'),
                 data_nascimento=form.cleaned_data.get('data_nascimento'),
                 numero_telefone=form.cleaned_data.get('numero_telefone')
             )
+            
             login(request, user)
             messages.success(request, 'Usuário cadastrado com sucesso.')
             return redirect('index')
-        context = {'form': form}
-        return render(request, self.template_name, context)
 
+        # Se o formulário não for válido, renderize-o novamente com erros
+        return render(request, self.template_name, {'form': form})
 # Login
 class LoginView(View):
     template_name = 'login.html'
@@ -71,9 +83,19 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def profile(request):
+    user_id = request.user.id
     # "objects.get_or_create" nessa parte se o 'objeto' não tiver sido criado ele ira criar um automaticamente através do 'or_create'
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-    context = {'user_profile': user_profile}
+    context = {
+        'user_profile': user_profile,
+        'first_name': user_profile.first_name,
+        'username': user_profile.username,
+        'cpf': user_profile.cpf,
+        'email': user_profile.email,
+        'data_nascimento': user_profile.data_nascimento,
+        'numero_telefone': user_profile.numero_telefone,
+        'user_id': user_id
+    }
     return render(request, 'profile.html', context)
 
 

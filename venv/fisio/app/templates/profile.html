@@ -3,17 +3,32 @@
 
 {% block body %}
 <div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-md-6" data-wow-delay="0.3s">
-            <div class="team-item">
-                <img class="img-fluid mb-4" src="{% static 'img/jv2.jpg' %}" alt="" style="width: 11rem;">
-                <h5> {{ user.first_name }}</h5>
-                <span class="text-primary">Co Fundador</span>
+    <div class="col text-center">
+        <div class="my-div">
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-6" data-wow-delay="0.3s">
+                    <div class="team-item">
+                        <img class="img-fluid mb-4" src="{% static 'img/jv2.jpg' %}" alt="" style="width: 11rem;">
+                        <h5> {{ user.first_name }}</h5>
+                        <p>ID: {{ user_id }}</p>
+                        <span class="text-primary">Co Fundador</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container container-custom" style="display: flex; justify-content: center; align-items: center;">
+                <div class="info-user" style="text-align: left;">
+                    <h2>Suas informações</h2>
+                    <p><strong>Nome:</strong> {{ user_profile.first_name }}</p>
+                    <p><strong>Nome de Usuário:</strong> {{ user_profile.username }}</p>
+                    <p><strong>CPF:</strong> {{ user_profile.cpf }}</p>
+                    <p><strong>Email:</strong> {{ user_profile.email }}</p>
+                    <p><strong>Data de Nascimento:</strong> {{ user_profile.data_nascimento }}</p>
+                    <p><strong>Telefone:</strong> {{ user_profile.numero_telefone }}</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- About Start -->
 <div class="container-xxl py-5">

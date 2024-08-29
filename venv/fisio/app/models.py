@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -6,7 +7,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255, null=True, blank=False)
     username = models.CharField(max_length=255, null=True, blank=False)
-    email = models.CharField(max_length=255, null=True, blank=False)
+    cpf = models.CharField(max_length=11, unique=True, null=True, blank=False)
+    email = models.EmailField(max_length=255, null=True, blank=False)
     data_nascimento = models.DateField(null=True, blank=False)
     numero_telefone = models.CharField(max_length=15, null=True, blank=False)
 
@@ -14,8 +16,10 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+
 class Medico(models.Model):
     nome = models.CharField(max_length=100)
+    cpf = models.CharField(max_length=11, unique=True, null=True, blank=False)
     especialidade = models.CharField(max_length=100)
 
     def __str__(self):
